@@ -26,9 +26,9 @@ on:
 
 env:
 #edit your values here
-  ENVIRONMENT_URL: https://org56438dc8.crm.dynamics.com/
-  USERNAME: JKoindala307
-  PASSWORD: JoinAugust@2024
+  ENVIRONMENT_URL: 'https://org56438dc8.crm.dynamics.com/'
+  USERNAME: 'Jayanthi.Koindala@hhs.texas.gov'
+  
 
 permissions:
   contents: write
@@ -49,14 +49,14 @@ jobs:
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
         user-name: ${{env.USERNAME}}
-        password-secret: ${{env.PASSWORD}}
+        password-secret: ${{ secrets.password }
 
     - name: export-solution action
       uses: microsoft/powerplatform-actions/export-solution@v0
       with:
         environment-url: ${{env.ENVIRONMENT_URL}}
         user-name: ${{env.USERNAME}}
-        password-secret: ${{env.PASSWORD}}
+        password-secret: ${{ secrets.password }
         solution-name: ${{ github.event.inputs.solution_name }}
         solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
 
